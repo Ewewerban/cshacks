@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legalne Komendy CS2)</title>
+    <style>
+        :root {
+            --bg-color: #0f111a;
+            --container-bg: #151824;
+            --accent-color: #ff9f43;
+            --accent-blue: #00d2d3;
+            --text-main: #f5f6fa;
+            --text-muted: #a0a5b5;
+            --border-color: #2c3043;
+            --badge-warning: rgba(255, 159, 67, 0.15);
+            --badge-blue: rgba(0, 210, 211, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(135deg, #1e2235 0%, #111422 100%);
+            padding: 40px 30px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .badge-only-bots {
+            display: inline-block;
+            background-color: #ff3838;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 700px;
+        }
+
+        /* Warnings & Disclaimer */
+        .disclaimer-box {
+            background-color: var(--badge-warning);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 25px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .disclaimer-box h3 {
+            color: var(--accent-color);
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .disclaimer-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 0 25px 25px 25px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            color: #fff;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 20px;
+            background-color: var(--accent-blue);
+            border-radius: 2px;
+        }
+
+        /* Step by step list */
+        .steps {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .steps li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .steps li::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 22px;
+            height: 22px;
+            background-color: var(--accent-blue);
+            color: var(--bg-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        /* Command Table Styling */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 12px 16px;
+        }
+
+        th {
+            background-color: #1a1e2e;
+            color: #fff;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:nth-child(even) {
+            background-color: #171a27;
+        }
+
+        tr:hover {
+            background-color: #1e2233;
+        }
+
+        code {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #222738;
+            color: var(--accent-blue);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 210, 211, 0.2);
+        }
+
+        .cmd-highlight {
+            color: var(--accent-color);
+            border-color: rgba(255, 159, 67, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="hero">
+            <span class="badge-only-bots">Tylko na boty / Trening</span>
+            <h1>Legalne Komendy Debugujące</h1>
+            <p>Poradnik bezpiecznego testowania i treningu w grach z silnikiem Source / Source 2 (CS2 & CS:GO). Bez ryzyka bana!</p>
+        </div>
+
+        <div class="disclaimer-box">
+            <h3>⚠️ Ważna Informacja</h3>
+            <p>Wszystkie poniższe komendy są wbudowanymi narzędziami deweloperskimi gry. Działają <strong>wyłącznie na lokalnym serwerze offline</strong> (podczas gry z botami lub na mapie treningowej). Gra automatycznie blokuje ich aktywację w meczach online z innymi graczami, co gwarantuje 100% bezpieczeństwo konta (brak ryzyka VAC bana).</p>
+        </div>
+
+        <div class="content">
+
+            <h2>Krok 1: Jak zacząć?</h2>
+            <ul class="steps">
+                <li data-step="1">Uruchom grę i załaduj mapę treningową lub stwórz <strong>prywatny mecz z botami</strong>.</li>
+                <li data-step="2">Otwórz konsolę deweloperską za pomocą klawisza tyldy (<code>~</code>).</li>
+                <li data-step="3">Wpisz komendę, która aktywuje prawa administratora na Twoim serwerze:<br>
+                    <code class="cmd-highlight">sv_cheats 1</code> (w CS:GO) lub <code class="cmd-highlight">sv_cheats true</code> (w CS2)
+                </li>
+            </ul>
+
+            <h2>1. Kontrola i Manipulacja Botami</h2>
+            <p style="color: var(--text-muted); margin-bottom: 10px;">Te komendy pomogą Ci ustawić boty dokładnie tam, gdzie chcesz, aby przeanalizować ich pozycje lub przetestować skany.</p>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%;">Komenda</th>
+                            <th>Efekt działania</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>bot_stop 1</code></td>
+                            <td>Całkowicie zatrzymuje wszystkie boty w miejscu, w którym stoją.</td>
+                        </tr>
+                        <tr>
+                            <td><code>bot_place</code></td>
+                            <td>Teleportuje wybranego bota bezpośrednio na miejsce, na które aktualnie celujesz.</td>
+                        </tr>
+                        <tr>
+                            <td><code>bot_mimic 1</code></td>
+                            <td>Sprawia, że boty kopiują każdy Twój ruch oraz strzał w czasie rzeczywistym.</td>
+                        </tr>
+                        <tr>
+                            <td><code>bot_kick</code></td>
+                            <td>Wyrzuca wszystkie boty z serwera, dając Ci pełną swobodę ruchu.</td>
+                        </tr>
+                        <tr>
+                            <td><code>bot_add_ct</code> / <code>bot_add_t</code></td>
+                            <td>Dodaje bota odpowiednio do drużyny antyterrorystów lub terrorystów.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>2. Wizualizacja Modeli (Testy Widoczności)</h2>
+            <p style="color: var(--text-muted); margin-bottom: 10px;">Pomaga sprawdzić, jak modele postaci zachowują się za przeszkodami i które ściany przepuszczają pociski (tzw. "legalny wallhack" do analizy mapy).</p>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%;">Komenda</th>
+                            <th>Gra</th>
+                            <th>Efekt działania</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>ent_skeleton *</code></td>
+                            <td><strong>CS2</strong></td>
+                            <td>Wyświetla szkielety postaci (w tym botów) widoczne przez przeszkody.</td>
+                        </tr>
+                        <tr>
+                            <td><code>r_aoproxy_show 1</code></td>
+                            <td><strong>CS2</strong></td>
+                            <td>Podświetla modele postaci na jasny, żółty kolor (wymaga włączonej okluzji otoczenia w opcjach).</td>
+                        </tr>
+                        <tr>
+                            <td><code>r_drawothermodels 2</code></td>
+                            <td><strong>CS:GO</strong></td>
+                            <td>Renderuje modele botów w postaci widocznej przez ściany siatki 3D (powrót: wpisz 1).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>3. Wspomaganie Treningu i Trajektorii</h2>
+            <p style="color: var(--text-muted); margin-bottom: 10px;">Narzędzia ułatwiające naukę rzucania granatów oraz strzelania.</p>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%;">Komenda</th>
+                            <th>Efekt działania</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>sv_infinite_ammo 1</code></td>
+                            <td>Daje nieskończoną ilość amunicji oraz granatów (brak potrzeby przeładowywania).</td>
+                        </tr>
+                        <tr>
+                            <td><code>sv_grenade_trajectory_prac_pip 1</code></td>
+                            <td>(CS2) Rysuje trajektorię lotu granatu i wyświetla małe okienko (Picture-in-Picture) z miejscem jego wybuchu.</td>
+                        </tr>
+                        <tr>
+                            <td><code>noclip</code></td>
+                            <td>Uruchamia tryb latania i przechodzenia przez ściany. Idealne do szybkiego poruszania się po mapie.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <footer>
+            Strona wygenerowana jako bezpieczny i legalny poradnik debugowania gier z serii Counter-Strike.<br>
+            Wszelkie prawa do komend należą do Valve Corporation. Korzystaj mądrze podczas treningu!
+        </footer>
+
+    </div>
+
+</body>
+</html>
